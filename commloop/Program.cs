@@ -12,22 +12,26 @@ namespace commloop
 {
     class Program
     {
-        public static string apikey { get; private set; }
+        public static string command { get; private set; }
+        public static string arguments { get; private set; }
         public static string inputfile { get; private set; }
 
         static void Main(string[] args)
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("Okta Api Key to Use");
-                apikey = Console.ReadLine();
+                Console.WriteLine("Command to Execute");
+                command = Console.ReadLine();
+                Console.WriteLine("Arguments to use");
+                arguments = Console.ReadLine();
                 Console.WriteLine("Input File to Use.");
                 inputfile = Console.ReadLine();
             }
             else
             {
-                 apikey = args[0];
-                 inputfile = args[1];
+                command = args[0];
+                 arguments = args[1];
+                 inputfile = args[2];
             }
 
 
@@ -37,17 +41,11 @@ namespace commloop
                 {
 
                     StringBuilder commandargs = new StringBuilder();
-                    commandargs.Append("- X PUT - H \"Accept: application / json\" - H \"Content - Type: application / json\" - H \"Authorization: SSWS ");
-                    commandargs.Append(apikey);
-                    commandargs.AppendFormat("\" - H \"Cache-Control: no-cache\" - d \'{" +
-                    "\"credentials\": {" +
-                     "\"password\" : { \"value\": \"{2}\" }" +
-                    "}" +
-                    "}\' \"https://amwaysso-qa.oktapreview.com/api/v1/users/{1}\"", line.Split(','));
 
+                    commandargs.AppendFormat(arguments, line.Split(','));
                     try
                     {
-                        Process.Start("curl.exe", commandargs.ToString());
+                        Process.Start(command, commandargs.ToString());
                     }
                     catch (Exception e)
                     {
@@ -58,10 +56,7 @@ namespace commloop
                     }
 
                 }
-
-
-
-
+                
             }
             catch (Exception x)
             {
