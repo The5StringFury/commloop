@@ -1,6 +1,6 @@
 E:\Workspaces\commloop\commloop\bin\Debug\commloop.exe.config
 E:\Workspaces\commloop\commloop\bin\Debug\commloop.exe
 E:\Workspaces\commloop\commloop\bin\Debug\commloop.pdb
-E:\Workspaces\commloop\commloop\obj\Debug\commloop.csprojResolveAssemblyReference.cache
 E:\Workspaces\commloop\commloop\obj\Debug\commloop.exe
 E:\Workspaces\commloop\commloop\obj\Debug\commloop.pdb
+E:\Workspaces\commloop\commloop\obj\Debug\commloop.csprojResolveAssemblyReference.cache
